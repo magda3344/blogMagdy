@@ -37,3 +37,16 @@ body h3 {
   text-decoration: none;
   color: #ffffff;
 }
+.image img {
+  margin: 20px;
+  padding: 20px;
+  height: 40%;
+  width:40%;
+}
+.mail-map a{
+  color: darkviolet;
+  font-size: 25px;
+  margin-bottom: 100px;
+  font-family: "Comic Sans MS";
+
+}

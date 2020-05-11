@@ -6,7 +6,7 @@ const expressSess = require('express-session')
 app.use(expressSess({secret:"Id of session"}));
 const port = 3000 //żeby sie wyświetliło muszę sama w przeglądarce wpisać localhost:3000 i enter
 
-app.get('/',  //app - zmienna, get- metoda, potem ścieżka
+app.get('/article-list',  //app - zmienna, get- metoda, potem ścieżka
     (req, res) => {
         if (req.session.visits) {
             req.session.visits++;
@@ -16,6 +16,7 @@ app.get('/',  //app - zmienna, get- metoda, potem ścieżka
             res.send("Witaj po raz pierwszy");
         } //funkcja, req- to co przyszło, res- to co budujemy i wysyłamy}
     }); //res.send - wyświetlanie
+
 
 app.get('/test',  //robimy podstonę, w przeglądarce muszę wpisać sama na górze po adresie/test i enter wyświetlić
     //samo sie nie wyświetli

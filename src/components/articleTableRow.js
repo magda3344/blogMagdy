@@ -6,14 +6,14 @@ import {Link} from 'react-router-dom'
 export default class ArticleTableRow extends Component{
     constructor(props) {
         super(props);
-this.deleteArticle=this.deleteArticle.bind(this);
+        this.deleteArticle=this.deleteArticle.bind(this);
     }
     deleteArticle(){ //funkcja pozwalająca usuwać artykuły
         axios.delete('http://localhost:4000/articles/delete-article/'+this.props.obj._id)
             .then((res)=>{
                 console.log("Deleted!")
             }).catch((error) =>{
-                console.log(error)
+            console.log(error)
         })
     }
     render() {

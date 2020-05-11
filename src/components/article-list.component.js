@@ -10,11 +10,11 @@ export default class ArticleList extends Component{
             articles: []
         }
     }
-    componentDidMount() {
+    componentDidMount() { //gotowy komponent
         axios.get('http://localhost:4000/articles/')
             .then(res =>{
                 this.setState({
-                    articles: res.data
+                    articles: res.data //zwrot danych
                 });
             })
             .catch(error =>{
@@ -22,12 +22,12 @@ export default class ArticleList extends Component{
             })
     }
     dataTable(){
-        return this.state.articles.map((res,i) =>{
-            return <ArticleTableRow obj={res} key={i}/>;
+        return this.state.articles.map((res,i) =>{ //map -na każdym artykule stosuje funkcję
+            return <ArticleTableRow obj={res} key={i}/>; //komponent jest renderowany, nr artukulu
         });
     }
     render (){
-        return (
+        return ( //html -to co pokazuje
             <div className="table-wrapper">
                 <Table striped bordered hover>
                     <thead>

@@ -15,7 +15,8 @@ export default class EditArticle extends Component {
         this.state = {
             title: '',
             author: '',
-            content: ''
+            content: '',
+
         }
     }
 
@@ -31,8 +32,9 @@ export default class EditArticle extends Component {
         this.setState({content: e.target.value})
     }
 
+
     componentDidMount() {
-        axios.get('http://localhost:4000/articles/edit-article'+this.props.match.params.id)
+        axios.get('http://localhost:4000/articles/edit-article/'+this.props.match.params.id)
             .then(res =>{
                 this.setState({
                     title: res.data.title,
@@ -54,15 +56,15 @@ export default class EditArticle extends Component {
             content: this.state.content,
         }
 
-        axios.put('http://localhost:4000/articles/update-article'+ this.props.match.params.id, article)
+        axios.put('http://localhost:4000/articles/update-article/'+ this.props.match.params.id, article)
             .then(res => {
                 console.log(res.data)
                 console.log("Updated")
+                this.props.history.push('/article-list')
             }).catch(error =>{
-                console.log(error)
+            console.log(error)
         });
 
-       this.props.history.push('/article-list')
     }
 
 
@@ -88,7 +90,8 @@ export default class EditArticle extends Component {
                     <Button variant="danger" size="lg" block="block" type ="submit">Update Article</Button>
 
                 </Form>
+
             </div>
         );
     }
-    }
+}
