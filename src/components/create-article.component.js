@@ -51,15 +51,17 @@ export default class CreateArticle extends Component {
     //https://blog.mailtrap.io/react-native-email-validation/
 
     onChangeArticleAuthor = (e) => {
-        const reg =/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+        const reg =/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-.]+)+$/;
         ///^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
         ///^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/;
         ///^[a-z\d]+[\w\d.-]*@(?:[a-z\d]+[a-z\d-]+\.){1,5}[a-z]{2,6}$/i;
         const newAuthor = e.target.value;
+        const updatedState = {author: newAuthor, errormessageauthor: ''};
 
-        if (newAuthor !== reg) {
-            this.setState({errormessageauthor: 'email address is not valid'});
-        }else this.setState(newAuthor);
+        if (!reg.test(newAuthor)) {
+           updatedState.errormessageauthor= 'email address is not valid';
+        }
+        this.setState(updatedState);
     }
 
     onChangeArticleContent = (e) => {
@@ -77,24 +79,28 @@ export default class CreateArticle extends Component {
 
 
     onSubmit = (e) => {
-        e.preventDefault() //gdy chcemy narzucić własną akcję
+        e.preventDefault() //gdy chcemy narzucić własną akcję, nie cały formularz
+        if (this.state.errormessagetitle===''&& this.state.title !==''
+            && this.state.errormessageauthor===''&& this.state.author !==''
+            && this.state.errormessagecontent===''&& this.state.content !==''){
 
-        const article = {
-            title: this.state.title,
-            author: this.state.author,
-            content: this.state.content,
-        }
+            const article = {
+                title: this.state.title,
+                author: this.state.author,
+                content: this.state.content,
+            }
 
-        axios.post('http://localhost:4000/articles/create-article', article) //gdzie chcemy przesłać zapytanie
-            //komukikacja między klientem a serwerem, wysyłamy żadanie, post-prześlij nowe dane na serwer
-            .then(res => console.log(res.data)) //to co chcemy otrzymać, jak dostajemy odpowiedz
+            axios.post('http://localhost:4000/articles/create-article', article) //gdzie chcemy przesłać zapytanie
+                //komukikacja między klientem a serwerem, wysyłamy żadanie, post-prześlij nowe dane na serwer
+                .then(res => console.log(res.data)) //to co chcemy otrzymać, jak dostajemy odpowiedz
 
-        this.setState({ //czyszczenie stanu formularza
-            title: '',
-            author: '',
-            content: ''
-        })
-    }
+            this.setState({ //czyszczenie stanu formularza
+                title: '',
+                author: '',
+                content: ''
+            })
+        } //else
+            }
 
     render() { //tu tworze formularz
         return (<div className="form-wrapper">
