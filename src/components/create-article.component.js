@@ -20,7 +20,8 @@ export default class CreateArticle extends Component {
             content: '',
             errormessagetitle: '',
             errormessageauthor: '',
-            errormessagecontent: ''
+            errormessagecontent: '',
+            errormessaseall: ''
         }
     } //dla każdego pola chcemy podpiąć obsługę zmiany stanu
 
@@ -30,12 +31,16 @@ export default class CreateArticle extends Component {
 
         const newTitle = e.target.value;
         const updatedState = {title: newTitle, errormessagetitle: ''}; //albo to albo to
+        const reg =/^[A-Z]/;
 
-        if (newTitle.length <= 2) {
+        if (newTitle !=="" && newTitle.length <= 2) {
             updatedState.errormessagetitle = 'Length of title must be higher than 2 characters';
         }
-        if (newTitle.length >= 10) {
+        if (newTitle !=="" && newTitle.length >= 10) {
             updatedState.errormessagetitle = 'Length of title must be lower than 10 characters';
+        }
+        if (newTitle !=="" && !reg.test(newTitle)) {
+            updatedState.errormessagetitle= 'Title must start with a capital letter';
         }
         this.setState(updatedState); //wyswietli nowy tytuł i error jak bedzie
     }
@@ -71,8 +76,8 @@ export default class CreateArticle extends Component {
         if (newContent.length <= 2) {
             updatedState.errormessagecontent = 'Length of content must be higher than 2 characters';
         }
-        if (newContent.length >= 10) {
-            updatedState.errormessagecontent = 'Length of content must be lower than 10 characters';
+        if (newContent.length >= 40) {
+            updatedState.errormessagecontent = 'Length of content must be lower than 40 characters';
         }
         this.setState(updatedState); //wyswietli nowy tytuł i error jak bedzie
     }
@@ -80,10 +85,13 @@ export default class CreateArticle extends Component {
 
     onSubmit = (e) => {
         e.preventDefault() //gdy chcemy narzucić własną akcję, nie cały formularz
+
+        const bad = 'The article was not created !!! Complete the form correctly !!!';
+
         if (this.state.errormessagetitle===''&& this.state.title !==''
             && this.state.errormessageauthor===''&& this.state.author !==''
-            && this.state.errormessagecontent===''&& this.state.content !==''){
-
+            && this.state.errormessagecontent===''&& this.state.content !=='')
+        {
             const article = {
                 title: this.state.title,
                 author: this.state.author,
@@ -99,8 +107,12 @@ export default class CreateArticle extends Component {
                 author: '',
                 content: ''
             })
-        } //else
+        } else {
+            this.setState({errormessaseall: [bad]});
             }
+        }
+
+
 
     render() { //tu tworze formularz
         return (<div className="form-wrapper">
@@ -114,7 +126,7 @@ export default class CreateArticle extends Component {
 
 
                     <Form.Group controlId="Author">
-                        <Form.Label>Author</Form.Label>
+                        <Form.Label>Author (e-mail address)</Form.Label>
                         <Form.Control type="text" value={this.state.author} onChange={this.onChangeArticleAuthor}/>
                     </Form.Group>
                     <p>{this.state.errormessageauthor}</p>
@@ -126,9 +138,12 @@ export default class CreateArticle extends Component {
                     <p>{this.state.errormessagecontent}</p>
 
                     <Button variant="danger" size="lg" block="block" type ="submit">Create Article</Button>
-
+                    <p></p>
+                    
+                    <p>{this.state.errormessaseall}</p>
                 </Form>
             </div>
         );
     }
 }
+
