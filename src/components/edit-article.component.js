@@ -73,17 +73,17 @@ export default class EditArticle extends Component {
 
                 <Form onSubmit={this.onSubmit}>
                     <Form.Group controlId="Title">
-                        <Form.Label>Title</Form.Label>
+                        <strong><Form.Label>Title</Form.Label></strong>
                         <Form.Control type="text" value={this.state.title} onChange={this.onChangeArticleTitle}/>
                     </Form.Group>
 
                     <Form.Group controlId="Author">
-                        <Form.Label>Author</Form.Label>
+                        <strong><Form.Label>Author</Form.Label></strong>
                         <Form.Control type="text" value={this.state.author} onChange={this.onChangeArticleAuthor}/>
                     </Form.Group>
 
                     <Form.Group controlId="Content">
-                        <Form.Label>Content</Form.Label>
+                        <strong><Form.Label>Content</Form.Label></strong>
                         <Form.Control type="text" value={this.state.content} onChange={this.onChangeArticleContent}/>
                     </Form.Group>
 

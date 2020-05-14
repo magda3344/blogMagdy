@@ -43,3 +43,6 @@ export default class ArticleList extends Component{
         )
     }
 }
+//   <Table striped bordered hover>
+
+

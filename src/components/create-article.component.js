@@ -119,28 +119,28 @@ export default class CreateArticle extends Component {
 
                 <Form onSubmit={this.onSubmit}>
                     <Form.Group controlId="Title">
-                        <Form.Label>Title</Form.Label>
+                        <strong><Form.Label>Title</Form.Label></strong>
                         <Form.Control type="text" value={this.state.title} onChange={this.onChangeArticleTitle}/>
                         <FieldValidationResults fieldErrorText={this.state.errormessagetitle} />
                     </Form.Group>
 
 
                     <Form.Group controlId="Author">
-                        <Form.Label>Author (e-mail address)</Form.Label>
+                        <strong><Form.Label>Author (e-mail address)</Form.Label></strong>
                         <Form.Control type="text" value={this.state.author} onChange={this.onChangeArticleAuthor}/>
                     </Form.Group>
                     <p>{this.state.errormessageauthor}</p>
 
                     <Form.Group controlId="Content">
-                        <Form.Label>Content</Form.Label>
+                        <strong><Form.Label>Content</Form.Label></strong>
                         <Form.Control type="text" value={this.state.content} onChange={this.onChangeArticleContent}/>
                     </Form.Group>
                     <p>{this.state.errormessagecontent}</p>
 
                     <Button variant="danger" size="lg" block="block" type ="submit">Create Article</Button>
-                    <p></p>
-                    
-                    <p>{this.state.errormessaseall}</p>
+
+                    <hr style={{color:'black',backgroundColor:'lightgrey', height:1}}/>
+                    <strong><p style={{color:'darkblue'}}>{this.state.errormessaseall}</p></strong>
                 </Form>
             </div>
         );

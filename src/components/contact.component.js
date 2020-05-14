@@ -24,8 +24,10 @@ export default class Contact extends React.Component {
     render() {
         return (<div className="mail-map">
                 <strong><a href={"mailto:" + this.props.email}> Email me</a></strong>
+
             <Iframe
-                    url="https://maps.google.com/maps?q=Chlodna%2051%20Warszawa%2C%20Polska&amp;ie=UTF8&amp;z=13&amp;output=embed"
+                    url="https://maps.google.com/maps?q=%20Kathmandu%2C%20Nepal&amp;ie=UTF8&amp;z=13&amp;output=embed"
+                    //https://maps.google.com/maps?q=Chlodna%2051%20Warszawa%2C%20Polska&amp;ie=UTF8&amp;z=13&amp;output=embed
                     width='100%'
                     height='300px'
                     scrolling='yes'/>

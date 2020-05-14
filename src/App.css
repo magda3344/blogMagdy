@@ -1,3 +1,7 @@
+body {
+  background-color: lightgoldenrodyellow;
+}
+
 .wrapper {
   padding-top: 30px;
 }
@@ -10,10 +14,19 @@ body h3 {
   color: #ffffff;
 }
 
-.form-wrapper,
+.form-wrapper{
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 .table-wrapper {
   max-width: 500px;
   margin: 0 auto;
+  border-color: red;
+
+}
+.form-wrapper hr{
+  margin-top: 45px;
 }
 
 .table-wrapper {
@@ -40,13 +53,21 @@ body h3 {
 .image img {
   margin: 20px;
   padding: 20px;
-  height: 40%;
-  width:40%;
+  height: 46%;
+  width:46%;
+  justify-content: center;
 }
 .mail-map a{
   color: darkviolet;
   font-size: 25px;
   margin-bottom: 100px;
   font-family: "Comic Sans MS";
+}
+.mail-map Iframe{
+  margin-top: 40px;
+}
+.image p{
+  background-color: lightgreen;
+  text-align: center;
 
 }
