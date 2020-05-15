@@ -105,10 +105,11 @@ export default class CreateArticle extends Component {
             this.setState({ //czyszczenie stanu formularza
                 title: '',
                 author: '',
-                content: ''
+                content: '',
+                errormessageall:''
             })
         } else {
-            this.setState({errormessaseall: [bad]});
+            this.setState({errormessaseall: bad});
             }
         }
 
@@ -139,8 +140,8 @@ export default class CreateArticle extends Component {
 
                     <Button variant="danger" size="lg" block="block" type ="submit">Create Article</Button>
 
-                    <hr style={{color:'black',backgroundColor:'lightgrey', height:1}}/>
-                    <strong><p style={{color:'darkblue'}}>{this.state.errormessaseall}</p></strong>
+                    {/*<hr style={{color:'black',backgroundColor:'lightgrey', height:1}}/>*/}
+                    <strong><p style={{color:'darkblue', paddingTop:50}}>{this.state.errormessaseall}</p></strong>
                 </Form>
             </div>
         );

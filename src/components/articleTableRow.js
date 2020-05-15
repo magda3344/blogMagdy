@@ -12,6 +12,7 @@ export default class ArticleTableRow extends Component{
         axios.delete('http://localhost:4000/articles/delete-article/'+this.props.obj._id)
             .then((res)=>{
                 console.log("Deleted!")
+                window.location.reload();
             }).catch((error) =>{
             console.log(error)
         })
@@ -29,4 +30,6 @@ export default class ArticleTableRow extends Component{
             </td>
         </tr>);
     }
+
+    //  window.location.reload();  odświeża stronę, po naciśnięciu delete artykuł od razu znika
 }

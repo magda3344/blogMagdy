@@ -26,7 +26,7 @@ function App() { //component w formie funkcji
                                     React MERN Stack App
                                 </Link>
                             </Navbar.Brand>
-                            <Nav classname="justify-content-end">
+                            <Nav className="justify-content-end">
                                 <Nav>
                                     <Link to={'/create-article'} className="nav-link">
                                         Create Article
