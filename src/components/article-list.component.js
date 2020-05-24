@@ -28,8 +28,9 @@ export default class ArticleList extends Component{
     }
     render (){
         return ( //html -to co pokazuje
+<div><div className="top">Article List</div>
             <div className="table-wrapper">
-                <Table striped bordered hover>
+                <Table striped bordered hover border-variant="dark">
                     <thead>
                     <tr>
                         <th>Title</th>
@@ -39,7 +40,7 @@ export default class ArticleList extends Component{
                     </thead>
                     <tbody>{this.dataTable()}</tbody>
                 </Table>
-            </div>
+            </div></div>
         )
     }
 }

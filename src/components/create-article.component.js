@@ -21,7 +21,7 @@ export default class CreateArticle extends Component {
             errormessagetitle: '',
             errormessageauthor: '',
             errormessagecontent: '',
-            errormessaseall: ''
+            errormessageall: ''
         }
     } //dla każdego pola chcemy podpiąć obsługę zmiany stanu
 
@@ -109,7 +109,7 @@ export default class CreateArticle extends Component {
                 errormessageall:''
             })
         } else {
-            this.setState({errormessaseall: bad});
+            this.setState({errormessageall: bad});
             }
         }
 
@@ -117,23 +117,23 @@ export default class CreateArticle extends Component {
 
     render() { //tu tworze formularz
         return (<div className="form-wrapper">
-
+<p className="top"> Create your article</p>
                 <Form onSubmit={this.onSubmit}>
                     <Form.Group controlId="Title">
-                        <strong><Form.Label>Title</Form.Label></strong>
+                        <strong><Form.Label>Title of the article</Form.Label></strong>
                         <Form.Control type="text" value={this.state.title} onChange={this.onChangeArticleTitle}/>
                         <FieldValidationResults fieldErrorText={this.state.errormessagetitle} />
                     </Form.Group>
 
 
                     <Form.Group controlId="Author">
-                        <strong><Form.Label>Author (e-mail address)</Form.Label></strong>
+                        <strong><Form.Label>Author (your e-mail address)</Form.Label></strong>
                         <Form.Control type="text" value={this.state.author} onChange={this.onChangeArticleAuthor}/>
                     </Form.Group>
                     <p>{this.state.errormessageauthor}</p>
 
                     <Form.Group controlId="Content">
-                        <strong><Form.Label>Content</Form.Label></strong>
+                        <strong><Form.Label>Add article content</Form.Label></strong>
                         <Form.Control type="text" value={this.state.content} onChange={this.onChangeArticleContent}/>
                     </Form.Group>
                     <p>{this.state.errormessagecontent}</p>
@@ -141,7 +141,7 @@ export default class CreateArticle extends Component {
                     <Button variant="danger" size="lg" block="block" type ="submit">Create Article</Button>
 
                     {/*<hr style={{color:'black',backgroundColor:'lightgrey', height:1}}/>*/}
-                    <strong><p style={{color:'darkblue', paddingTop:50}}>{this.state.errormessaseall}</p></strong>
+                    <strong><p style={{color:'darkblue', paddingTop:50}}>{this.state.errormessageall}</p></strong>
                 </Form>
             </div>
         );

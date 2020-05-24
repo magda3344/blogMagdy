@@ -18,13 +18,16 @@ export default class ArticleTableRow extends Component{
         })
     }
     render() {
-        return (<tr>
+        return (<tr className='tabela'>
             <td>{this.props.obj.title}</td>
             <td>{this.props.obj.author}</td>
             <td>{this.props.obj.content}</td>
-            <td>
+            <td className='buttons'>
                 <Link className="edit-link" to={"/edit-article/"+this.props.obj._id}>
                     Edit
+                </Link>
+                <Link className="comment" to={"/comment/"+this.props.obj._id}>
+                    Comment
                 </Link>
                 <Button onClick={this.deleteArticle} size="sm" variant="danger">Delete</Button>
             </td>

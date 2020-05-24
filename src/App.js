@@ -13,6 +13,7 @@ import EditArticle from "./components/edit-article.component";
 import ArticleList from "./components/article-list.component";
 import Contact from "./components/contact.component";
 import About from "./components/about.component";
+import Comment from "./components/comment.component";
 
 function App() { //component w formie funkcji
                  //wewnatrz routeru mamy pasek nawigacji, exact path - domyślna scieżka
@@ -47,6 +48,7 @@ function App() { //component w formie funkcji
                                         About me
                                     </Link>
                                 </Nav>
+
                             </Nav>
                         </Container>
                     </Navbar>
@@ -63,6 +65,7 @@ function App() { //component w formie funkcji
                                     <Route path='/article-list' component={ArticleList}/>
                                     <Route path='/contact' component={Contact}/>
                                     <Route path='/about' component={About}/>
+                                    <Route path='/comment/:id' component={Comment}/>
                                 </Switch>
                             </div>
                         </Col>

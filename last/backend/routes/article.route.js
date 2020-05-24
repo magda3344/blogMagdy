@@ -2,7 +2,8 @@ let mongoose = require('mongoose'),
     express = require('express'),
     router = express.Router();
 
-let articleSchema= require('../models/Article'); // wyjście wyżej do katalogu ../ podpowiada
+let articleSchema= require('../models/Article');
+let commentSchema= require('../models/Comment'); // wyjście wyżej do katalogu ../ podpowiada
 
 router.route('/create-article').post((req,res,next)=>{
    articleSchema.create(req.body, (error,data)=>{
@@ -49,8 +50,41 @@ router.route('/update-article/:id').put((req,res, next)=>{
     })
 })
 
+router.route('/comment/:id').get((req,res)=>{
+    articleSchema.findById(req.params.id,(error,data)=>{
+        if(error){
+            console.log(error)
+            res.json('') //zwracamy puste dane
+        }else{
+            res.json(data)
+            console.log("Displayed!")
+        }
+    })
+})
+router.route('/comment').post((req,res,next)=>{
+    commentSchema.create(req.body, (error,data)=>{
+        if(error){
+            return next(error)
+        }else {
+            console.log(data);
+            res.json(data)
+        }
+    })
+});
+
+
 router.route('/delete-article/:id').delete((req,res, next)=>{ //usuwamy artykuł
     articleSchema.findByIdAndRemove(req.params.id, (error,data) => {
+        if(error){
+            return next(error)
+        }else{
+            res.status(200).json({msg:data})
+
+        }
+    })
+})
+router.route('/delete-comment/:id').delete((req,res, next)=>{ //usuwamy artykuł
+    commentSchema.findByIdAndRemove(req.params.id, (error,data) => {
         if(error){
             return next(error)
         }else{

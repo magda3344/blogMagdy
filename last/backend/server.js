@@ -29,6 +29,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cors());
 app.use('/articles', articleRoute);
+app.use('/comments', articleRoute)
 
 //definiujemy port do którego sie łączymy
 //najpierw sprawdzamy czy port istnieje, gdy nie bedzie to użyjmy 4000
